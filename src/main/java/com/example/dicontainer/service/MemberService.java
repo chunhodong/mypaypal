@@ -5,7 +5,7 @@ import com.example.dicontainer.repository.MemberRepository;
 
 public class MemberService {
 
-    public MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
