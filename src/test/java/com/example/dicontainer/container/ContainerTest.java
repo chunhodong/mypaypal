@@ -1,5 +1,7 @@
 package com.example.dicontainer.container;
 
+import com.example.dicontainer.repository.BookRepositoryImpl;
+import com.example.dicontainer.repository.MemberRepository;
 import com.example.dicontainer.repository.MemberRepositoryImpl;
 import com.example.dicontainer.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
@@ -30,14 +32,14 @@ public class ContainerTest {
         var classes = new HashSet<Class<?>>();
         classes.add(MemberService.class);
         classes.add(MemberRepositoryImpl.class);
+        classes.add(BookRepositoryImpl.class);
 
         DiContainer container = new DiContainer(classes);
-        MemberRepositoryImpl memberRepositoryImpl = container.getBean(MemberRepositoryImpl.class);
+        MemberRepository memberRepository = container.getBean(MemberRepository.class);
         MemberService MemberService = container.getBean(MemberService.class);
 
-        assertThat(memberRepositoryImpl).isNotNull();
         assertAll(
-                () -> assertThat(memberRepositoryImpl).isNotNull(),
+                () -> assertThat(memberRepository).isNotNull(),
                 () -> assertThat(MemberService).isNotNull());
     }
 }

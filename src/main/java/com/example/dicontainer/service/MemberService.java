@@ -1,17 +1,18 @@
 package com.example.dicontainer.service;
 
 import com.example.dicontainer.domain.Member;
-import com.example.dicontainer.repository.MemberRepositoryImpl;
+import com.example.dicontainer.repository.MemberRepository;
 
 public class MemberService {
 
-    private final MemberRepositoryImpl memberRepositoryImpl;
+    private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepositoryImpl memberRepositoryImpl){
-        this.memberRepositoryImpl = memberRepositoryImpl;
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
-    public Member join(Member member){
-        memberRepositoryImpl.save(member);
-        return memberRepositoryImpl.findById(member.getId());
+
+    public Member join(Member member) {
+        memberRepository.save(member);
+        return memberRepository.findById(member.getId());
     }
 }
