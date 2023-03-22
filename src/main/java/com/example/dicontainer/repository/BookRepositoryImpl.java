@@ -14,7 +14,7 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public void rent(Long id) {
-        books.remove(id);
+    public Book rent(Long id) {
+        return books.remove(id);
     }
 }

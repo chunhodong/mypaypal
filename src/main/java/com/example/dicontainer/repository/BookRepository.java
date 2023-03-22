@@ -4,5 +4,5 @@ import com.example.dicontainer.domain.Book;
 
 public interface BookRepository {
     void restore(Book book);
-    void rent(Long id);
+    Book rent(Long id);
 }
