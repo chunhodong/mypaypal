@@ -10,11 +10,11 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book rent(Long id) {
-        return bookRepository.rent(id);
+    public Book get(Long id) {
+        return bookRepository.get(id);
     }
 
-    public void restore(Book book) {
-        bookRepository.restore(book);
+    public void save(Book book) {
+        bookRepository.save(book);
     }
 }
