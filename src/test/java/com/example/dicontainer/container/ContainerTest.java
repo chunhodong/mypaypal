@@ -1,9 +1,9 @@
 package com.example.dicontainer.container;
 
-import com.example.dicontainer.repository.BookRepositoryImpl;
-import com.example.dicontainer.repository.MemberRepository;
-import com.example.dicontainer.repository.MemberRepositoryImpl;
+import com.example.dicontainer.repository.*;
+import com.example.dicontainer.service.BookService;
 import com.example.dicontainer.service.MemberService;
+import com.example.dicontainer.service.RentService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,15 +31,22 @@ public class ContainerTest {
     void createContainer(){
         var classes = new HashSet<Class<?>>();
         classes.add(MemberService.class);
+        classes.add(BookService.class);
         classes.add(MemberRepositoryImpl.class);
         classes.add(BookRepositoryImpl.class);
+        classes.add(RentRepositoryImpl.class);
+        classes.add(RentService.class);
 
         DiContainer container = new DiContainer(classes);
         MemberRepository memberRepository = container.getBean(MemberRepository.class);
-        MemberService MemberService = container.getBean(MemberService.class);
+        BookRepository bookRepository = container.getBean(BookRepository.class);
+        MemberService memberService = container.getBean(MemberService.class);
+        BookService bookService = container.getBean(BookService.class);
 
         assertAll(
                 () -> assertThat(memberRepository).isNotNull(),
-                () -> assertThat(MemberService).isNotNull());
+                () -> assertThat(bookRepository).isNotNull(),
+                () -> assertThat(memberService).isNotNull(),
+                () -> assertThat(bookService).isNotNull());
     }
 }
