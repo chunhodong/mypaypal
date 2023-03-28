@@ -1,13 +1,13 @@
-package com.example.dicontainer;
+package com.example.mypaypal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DicontainerApplication {
+public class MypaypalApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DicontainerApplication.class, args);
+        SpringApplication.run(MypaypalApplication.class, args);
     }
 
 }
