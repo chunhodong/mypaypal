@@ -2,6 +2,8 @@ package com.example.mypaypal.account.domain;
 
 import lombok.Value;
 
+import java.time.LocalDateTime;
+
 public class Account {
 
     private AccountId id;
@@ -16,17 +18,30 @@ public class Account {
         if(!myWithdraw(money)){
             return false;
         }
-
-        return false;
+        Activity withdrawal = new Activity(this.id,this.id,targetAccountId, LocalDateTime.now(),money);
+        this.activityWindow.addActivity(withdrawal);
+        return true;
     }
 
     private boolean myWithdraw(Money money){
         return Money.add(this.calculateBalance(),money.negate()).isPositive();
     }
 
+    public boolean deposit(Money money,AccountId sourceAccountId){
+        Activity deposit = new Activity(
+                this.id,
+                sourceAccountId,
+                this.id,
+                LocalDateTime.now(),
+                money
+        );
+        this.activityWindow.addActivity(deposit);
+        return true;
+    }
+
     @Value
     public static class AccountId {
         private Long value;
     }
-
 }
+
