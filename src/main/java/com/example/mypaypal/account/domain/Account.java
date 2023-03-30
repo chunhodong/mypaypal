@@ -1,9 +1,12 @@
 package com.example.mypaypal.account.domain;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.time.LocalDateTime;
 
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Account {
 
     private AccountId id;
@@ -44,4 +47,3 @@ public class Account {
         private Long value;
     }
 }
-
